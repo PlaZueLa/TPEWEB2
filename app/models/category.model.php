@@ -23,5 +23,29 @@ class CategoryModel {
         
         return $categories;
 }
+public function insertCategorys($nombre) {
+    $query = $this->db->prepare("INSERT INTO categorias (nombre) VALUES (?)");
+    $query->execute([$nombre]);
+    return $this->db->lastInsertId();
+}
+
+
+function deleteCategoryById($id) {
+   $query = $this->db->prepare('DELETE FROM categorias WHERE id = ?');
+    $query->execute([$id]);
+}
+
+function updateEditCat($nombre,$id){
+    $query = $this->db->prepare("UPDATE categorias SET nombre = ? WHERE categorias.id = ?");
+    $query->execute([$nombre,$id]); 
+}
+
+function getCategoryId($id){
+    $query = $this->db->prepare("SELECT * FROM `categorias` WHERE id = ?");
+    $query->execute([$id]);
+    $category = $query->fetch(PDO::FETCH_OBJ);
+    return $category;
+
+}
 
 }

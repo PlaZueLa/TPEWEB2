@@ -1,4 +1,6 @@
 {{if isset($smarty.session.IS_LOGGED)}}
+
+    <h1>Agregue un auto</h1>
 <form action="add" method="POST" class="my-4">
     
 

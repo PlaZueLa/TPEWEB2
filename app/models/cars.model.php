@@ -45,11 +45,11 @@ function getCarId($id){
     $car = $query->fetch(PDO::FETCH_OBJ);
     return $car;
 }
-  
+
 function updateEditCar($id,$marca,$modelo,$fecha_creacion,$precio,$descripcion,$id_categoria){
     $query = $this->db->prepare("UPDATE vehiculos SET marca = ?, modelo = ?, fecha_creacion = ?, precio = ?, descripcion = ?, id_categoria = ? WHERE vehiculos.id = ?");
-    $query->execute([$id,$marca,$modelo,$fecha_creacion,$precio,$descripcion,$id_categoria]); 
-    return $id;
+    $query->execute([$marca,$modelo,$fecha_creacion,$precio,$descripcion,$id_categoria,$id]); 
+    
     
 }
 
@@ -64,18 +64,12 @@ public function Filtrar($id) {
    }
 
 
-public function insertCategorys($nombre) {
-    $query = $this->db->prepare("INSERT INTO categorias (nombre) VALUES (?)");
-    $query->execute([$nombre]);
-    return $this->db->lastInsertId();
+   public function showCarInfo($id){
+    $query = $this->db->prepare("SELECT * FROM vehiculos WHERE id = ?");
+    $query->execute(array($id));
+    $car = $query->fetch(PDO::FETCH_OBJ);
+    return $car;
 }
-
-
-function deleteCategoryById($id) {
-   $query = $this->db->prepare('DELETE FROM categorias WHERE id = ?');
-    $query->execute([$id]);
-}
-
 }
 
 

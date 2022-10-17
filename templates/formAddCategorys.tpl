@@ -1,4 +1,6 @@
 {{if isset($smarty.session.IS_LOGGED)}}
+
+    <h1>Agregue una categoria</h1>
     <form action="addCategory" method="POST" class="my-4">
         
     

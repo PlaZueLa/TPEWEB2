@@ -38,6 +38,10 @@ switch ($params[0]) {
         $AdminController = new AdminController();
         $AdminController->Logout();
         break;
+    case 'detalle':
+        $carsController = new CarsController();
+        $carsController->showCarsById($params[1]);
+        break;
     case 'categorias':
         $carsController = new CarsController();
         $carsController->showCategories();
@@ -54,32 +58,45 @@ switch ($params[0]) {
         break;
         case "ShowFormEditCar":
         
-            $id = $params[1];
+            
             $carsController = new CarsController();
-            $carsController->editCar($id);
+            $carsController->editCar($params[1]);
             break;
         case "updateCar":
             
-            $id = $params[1];
+            //$id = $params[1];
             $carsController = new CarsController();
-            $carsController->updateCar($id);
+            $carsController->updateCar();
             break;
     case 'filtrar':
         $id = $params[1];
         $carsController = new CarsController();
         $carsController->Filtrar($id);
         break;
-        case 'addCategory':
-            $carsController = new CarsController();
-             $carsController->addCategory();
-            break;
-       case 'deleteCat':
+    case 'addCategory':
+        $carsController = new CarsController();
+        $carsController->addCategory();
+        break;
+    case 'deleteCat':
         
-             
         $id = $params[1];
         $carsController = new CarsController();
         $carsController->deleteCategory($id);
         break;
+    case "ShowFormEditCat":
+        $id = $params[1];
+        $carsController = new CarsController();
+        $carsController->ShowEditCategoryForm($id);
+        break;
+
+        case "editCat":
+            
+            //$id = $params[1];
+            $carsController = new CarsController();
+            $carsController->updateCat();
+            break;
+
+
     default:
         echo('404 Page not found');
         break;

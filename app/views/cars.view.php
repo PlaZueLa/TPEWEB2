@@ -23,7 +23,7 @@ class CarsView {
     
     function showEditCar($car){
         $this->smarty->assign('car', $car);
-
+        
         $this->smarty->display('editFormCar.tpl');
     }
 
@@ -35,6 +35,11 @@ class CarsView {
 
    }
 
+    function showEditCategories ($categories) {
+    $this->smarty->assign("categories", $categories);
+    $this->smarty->display("templates/editFormCat.tpl");
+
+    }
    function FiltrarCar($cars) {
 
     $this->smarty->assign("cars", $cars);
@@ -42,7 +47,12 @@ class CarsView {
     $this->smarty->display("templates/carsFilter.tpl");
     
 }
-    
+ function showCarsByIdinfo($car){
+    $this->smarty->assign('car', $car);
+    $this->smarty->display('templates/carsInfoById.tpl');
+ }
+
+
 
 }
 

@@ -20,7 +20,14 @@
    <td>{$car->fecha_creacion}</td>
    <td>{$car->precio}</td>
    <td>{$car->descripcion}</td>
-   <td>{$car->categoria}</td>
+   {{if {$car->id_categoria == 1}}}
+    <td>Urbano</td>
+   {{else if {$car->id_categoria == 2}}}
+    <td>Pick Up</td>
+    {{else if {$car->id_categoria == 3}}}
+    <td>Comercial</td>
+    {{/if}}
+
 
 
 </tbody>
