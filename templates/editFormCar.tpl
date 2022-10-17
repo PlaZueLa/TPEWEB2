@@ -19,7 +19,7 @@
                     <option value="2">2</option>
                     <option value="3">3</option>
                  </select>
-  <button type="submit" class="btn btn-primary">updateCar</button>
+  <button type="submit" class="btn btn-primary">Actualizar</button>
 </form
 
 

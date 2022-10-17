@@ -42,7 +42,7 @@ class CarsController {
         $descripcion = $_POST['descripcion'];
         $id_categoria = $_POST['categoria'];
     
-        $id = $this->model->insertCars($marca, $modelo, $fecha_creacion, $precio, $descripcion, $id_categoria);
+         $this->model->insertCars($marca, $modelo, $fecha_creacion, $precio, $descripcion, $id_categoria);
     
         header("Location: " . BASE_URL); 
     
@@ -50,6 +50,7 @@ class CarsController {
 
     }
 
+   
     function deleteCar($id) {
       
         $this->model->deleteCarById($id);
@@ -73,7 +74,11 @@ class CarsController {
 
   }
  
-  
+     public function Filtrar($id) {
+    $cars = $this->model->Filtrar($id);
+      
+     $this->view->FiltrarCar($cars);
+   }
   
 
 
@@ -86,20 +91,30 @@ class CarsController {
 
 
    }  
+
+   function addCategory() {
+
+    $nombre = $_POST['nombre'];
+    
+    $this->model->insertCategorys($nombre);
+    
+    
+    header("Location: " . BASE_URL . '/categorias');
+
+
+  }
+
    
-   
-    public function Filtrar($id) {
-     $cars = $this->model->Filtrar($id);
-       
-      $this->view->FiltrarCar($cars);
-    }
+   function deleteCategory($id) {
+    $this->model->deleteCategoryById($id);
 
+    header("Location: " . BASE_URL . '/categorias');
+    
+}
 
+//function EditCategory() {
 
-  // function deleteCategory($id) {
-  //  $this->model->deleteCategoryById($id);
-  //  header("Location: " . 'Categorias');
-//}
+  //$nombre = $_POST['nombre'];
 
 
 
@@ -114,6 +129,6 @@ class CarsController {
 
 
 
-   
+  
    
    

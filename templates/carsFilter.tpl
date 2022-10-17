@@ -21,13 +21,15 @@
    <td>{$car->precio}</td>
    <td>{$car->descripcion}</td>
    <td>{$car->categoria}</td>
+
+
+</tbody>
 {/foreach}
-
-
-
-
-
-
-
-
+</table>
 {include file='footer.tpl'}
+
+
+
+
+
+

@@ -68,12 +68,18 @@ switch ($params[0]) {
         $id = $params[1];
         $carsController = new CarsController();
         $carsController->Filtrar($id);
-      // case 'delete':
-       // $carsController = new CarsController();
-            // obtengo el parametro de la acción
-       // $id = $params[1];
-      //  $carsController->deleteCategory($id);
-       // break;
+        break;
+        case 'addCategory':
+            $carsController = new CarsController();
+             $carsController->addCategory();
+            break;
+       case 'deleteCat':
+        
+             
+        $id = $params[1];
+        $carsController = new CarsController();
+        $carsController->deleteCategory($id);
+        break;
     default:
         echo('404 Page not found');
         break;

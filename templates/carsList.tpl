@@ -24,6 +24,7 @@
    {{if isset($smarty.session.IS_LOGGED)}}
    <td><a href='ShowFormEditCar/{$car->id}' type='button' class='btn-outline-secondary'>Editar</a></td>
    <td><a href='delete/{$car->id}' type='button' class='btn btn-danger'>Borrar</a></td>
+   
    {{/if}}
 </tbody>
 {/foreach}
@@ -31,7 +32,7 @@
 
  
 
-{include file="formAlta.tpl"}
+{include file="formAddCars.tpl"}
 
 
 

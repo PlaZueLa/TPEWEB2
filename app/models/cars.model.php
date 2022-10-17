@@ -48,9 +48,8 @@ function getCarId($id){
   
 function updateEditCar($id,$marca,$modelo,$fecha_creacion,$precio,$descripcion,$id_categoria){
     $query = $this->db->prepare("UPDATE vehiculos SET marca = ?, modelo = ?, fecha_creacion = ?, precio = ?, descripcion = ?, id_categoria = ? WHERE vehiculos.id = ?");
-    var_dump($id,$marca,$modelo,$fecha_creacion,$precio,$descripcion,$id_categoria);
     $query->execute([$id,$marca,$modelo,$fecha_creacion,$precio,$descripcion,$id_categoria]); 
-
+    return $id;
     
 }
 
@@ -58,17 +57,24 @@ function updateEditCar($id,$marca,$modelo,$fecha_creacion,$precio,$descripcion,$
 
     
 public function Filtrar($id) {
-    $query = $this->db->prepare("SELECT * FROM vehiculos WHERE id_categoria = '?'");
+    $query = $this->db->prepare("SELECT vehiculos.*, categorias.nombre as categoria FROM vehiculos JOIN categorias ON vehiculos.id_categoria = categorias.id WHERE id_categoria = ?");
     $query->execute([$id]);
     $cars = $query->fetchAll(PDO::FETCH_OBJ);
     return $cars;
    }
 
 
-//function deleteCategoryById($id) {
- //   $query = $this->db->prepare('DELETE FROM categorias WHERE id = ?');
-  //  $query->execute([$id]);
-//}
+public function insertCategorys($nombre) {
+    $query = $this->db->prepare("INSERT INTO categorias (nombre) VALUES (?)");
+    $query->execute([$nombre]);
+    return $this->db->lastInsertId();
+}
+
+
+function deleteCategoryById($id) {
+   $query = $this->db->prepare('DELETE FROM categorias WHERE id = ?');
+    $query->execute([$id]);
+}
 
 }
 
