@@ -42,10 +42,9 @@
             <div class="form-group">
                 <label>Categoria</label>
                 <select name="categoria" class="form-control">
-                    <option selected value={$car->id_categoria}>{$car->categoria}</option>
-                    <option value="1">1 - Urbano</option>
-                    <option value="2">2 - Pick Up</option>
-                    <option value="3">3 - Comercial</option>
+                    {foreach from=$categories item=$category}
+                    <option  value={$category->id}>{$category->nombre}</option>
+                    {/foreach}
                     
                 </select>
             </div>

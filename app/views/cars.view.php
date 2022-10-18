@@ -11,19 +11,19 @@ class CarsView {
         $this->smarty = new Smarty();
 
     }
-    function showCars($cars) {
+    function showCars($cars,$categories) {
 
         $this->smarty->assign("cars", $cars);
-        
+        $this->smarty->assign("categories", $categories);
         $this->smarty->display("templates/carsList.tpl");
         
     }
 
     
     
-    function showEditCar($car){
+    function showEditCar($car,$categories){
         $this->smarty->assign('car', $car);
-        
+        $this->smarty->assign("categories", $categories);
         $this->smarty->display('editFormCar.tpl');
     }
 
@@ -52,6 +52,7 @@ class CarsView {
     $this->smarty->display('templates/carsInfoById.tpl');
  }
 
+ 
 
 
 }

@@ -15,11 +15,9 @@
   <input name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Descripcion del vehiculo" value="{$car->descripcion}">
   <label for="id_categoria">Categoria</label>
                 <select name="id_categoria" class="form-control" id="id_categoria" placeholder="Categoria del vehiculo">
-                   
-                <option selected value={$car->id_categoria}></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+                {foreach from=$categories item=$category}
+                  <option  value={$category->id}>{$category->nombre}</option>
+                  {/foreach}
                  </select>
   <button type="submit" class="btn btn-primary">Actualizar</button>
 </form

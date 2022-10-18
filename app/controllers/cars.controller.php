@@ -27,21 +27,21 @@ class CarsController {
     public function showCars() {
       
         $cars = $this->model->getAllCars();
-       
-        $this->view->showCars($cars);
+        $categories = $this->CategoryModel->getAllCategories();
+        $this->view->showCars($cars,$categories);
     }
 
 
     function addCars() {
         // TODO: validar entrada de datos
-        
+        $categories = $this->CategoryModel->getAllCategories();
         $marca = $_POST['marca'];
         $modelo = $_POST['modelo'];
         $fecha_creacion = $_POST['fecha_creacion'];
         $precio = $_POST['precio'];
         $descripcion = $_POST['descripcion'];
         $id_categoria = $_POST['categoria'];
-    
+        
          $this->model->insertCars($marca, $modelo, $fecha_creacion, $precio, $descripcion, $id_categoria);
     
         header("Location: " . BASE_URL); 
@@ -59,11 +59,12 @@ class CarsController {
 
     public function editCar($id){
       $car = $this->model->getCarId($id);
-      $category = $this->CategoryModel->getCategoryId($id);
-      $this->view->showEditCar($car);
+      $categories = $this->CategoryModel->getAllCategories();
+      $this->view->showEditCar($car,$categories);
   }
      
   public function updateCar(){
+  
     $id = $_POST['id'];
     $marca = $_POST['marca'];
     $modelo = $_POST['modelo'];
@@ -85,6 +86,7 @@ class CarsController {
 
 
     public function showCarsById($id){
+      
       $CarIdSelected = $this->model->showCarInfo($id);
       $this->view->showCarsByIdinfo($CarIdSelected);
 
@@ -116,6 +118,8 @@ class CarsController {
 
    
    function deleteCategory($id) {
+
+    
     $this->CategoryModel->deleteCategoryById($id);
 
     header("Location: " . BASE_URL . '/categorias');
